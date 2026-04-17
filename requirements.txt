@@ -1,0 +1,9 @@
+gradio
+sentence-transformers
+torch
+google-cloud-bigquery
+datasketch
+pandas
+numpy
+python-dotenv
+scikit-learn
