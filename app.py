@@ -158,10 +158,10 @@ Embedding Real: {best_real:.3f}
 """
 
     matches = "🔴 Fake Examples:\n"
-    matches += "\n".join([fake_texts[i][:120] for i in np.argsort(-sim_fake)[:2]])
+    matches += "\n".join([fake_texts[i] for i in np.argsort(-sim_fake)[:2]])
 
     matches += "\n\n🟢 Real Examples:\n"
-    matches += "\n".join([real_texts[i][:120] for i in np.argsort(-sim_real)[:2]])
+    matches += "\n".join([real_texts[i] for i in np.argsort(-sim_real)[:2]])
 
     emb_text = f"""
 Fake Similarity: {best_fake:.3f}
@@ -209,8 +209,12 @@ def analyze_live_news(query):
 with gr.Blocks() as demo:
 
     gr.Markdown("# 🧠 Fake Vs Real News Detection System")
-    gr.Markdown("TF-IDF + BERT + Embeddings + Correct Probability Model")
+    gr.Markdown("""
+        📰 **End-to-End News Intelligence Pipeline**
 
+        BigQuery • Data Partitioning • NLP (TF-IDF + BERT + Embeddings) •  
+        Graph Analytics (Neo4j) • Probabilistic Classification Model
+        """)
     inp = gr.Textbox(lines=6, label="Enter News Text")
     btn = gr.Button("Analyze")
 
