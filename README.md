@@ -6,16 +6,12 @@ Manisha Bhalla (M25DE1050) · Vitthal Pandey (M25DE1060) · Sayan Chakraborty (M
 
 📌 Overview
 
-With the rapid rise of large language models like GPT-4, the creation of fake, manipulated, and AI-generated news has become easier than ever. This project presents a scalable hybrid pipeline that can detect:
+The emergence of large language models such as GPT-4 makes it easier than before to create false information, manipulated, and synthetic generated news. This work presents a scalable hybrid pipeline to determine whether news is duplicate, paraphrased, or ai generated. The proposed solution uses two methods for determining this; first, an approximate similarity method to find identical versions of the same piece of news and second, a deep semantic analysis method to identify paraphrases of the original piece of news.
 
-1. Duplicate news articles (identical copies)
-2. Paraphrased articles (semantically similar but reworded)
-3. AI-generated articles (synthetic content mimicking human writing)
-
-The system combines approximate similarity search with deep semantic analysis, achieving near-perfect detection accuracy while maintaining high computational efficiency.
+Both solutions are combined together with other features to obtain a high level of precision for the determination of the type of generated news. The method proposed is scalable due to its use of efficient algorithms and architectures.
 
 🏗️ System Architecture
-The pipeline consists of 6 stages:
+The proposed pipeline consists of six steps:
 Data Ingestion → MinHash + LSH → BERT Embeddings → AI Detector → Hybrid Fusion → Gradio UI
 Stage	Component	Purpose
 1	Data Ingestion & Preprocessing	Load, clean, normalize, tokenize
@@ -47,17 +43,17 @@ Evaluation	scikit-learn (Confusion Matrix, ROC, AUC)
 
 
 📁 Project Structure
-news-detection-project/
+News-detection-project/
 │
-├── engine.py              # Core prediction logic, embedding scoring, LSH integration
-├── bert_module.py         # Sentence Transformer embeddings + cosine similarity
-├── lsh.py                 # MinHash-based document representation + LSH indexing
-├── train_model.py         # Model training pipeline (TF-IDF + Logistic Regression)
-├── main.py                # FastAPI REST API (prediction endpoint)
-├── app.py                 # Gradio dashboard (interactive UI)
-├── api.py                 # Live news integration via external APIs
-├── evaluation.py          # Confusion matrix, ROC curve, AUC computation
-└── README.md
+├── engine.py # Core prediction logic, embedding scoring, lsh integration
+├── bert_module.py # Sentence Transformer embeddings + cosine similarity
+├── lsh.py # minhash-based document representation + lsh indexing
+├── train_model.py # model training pipeline (tf-idf + logistic Regression)
+├── main.py # FastAPI REST API (prediction endpoint)
+├── app.py # Gradio dashboard (interactive ui)
+├── api.py # live news integration via external APIs
+├── evaluation.py # Confusion Matrix, ROC Curve, AUC computation
+└── readme.md
 
 ⚙️ Setup & Installation
 Prerequisites
@@ -70,11 +66,11 @@ pip install transformers sentence-transformers scikit-learn \
 🚀 Running the Project
 1. Train the Model
    python train_model.py
-This will preprocess the dataset, train the TF-IDF + Logistic Regression classifier, and serialize the model.
+This will perform the preprocessing for your dataset and also train the tf-idf + logistic Regression classifier and save it as a model. 
 
 2. Launch the Gradio Dashboard
    python app.py
-Opens an interactive UI for entering news text and viewing real-time predictions, probability distributions, and similar article comparisons.
+It opens an interactive interface for you to enter your own news texts and see how they will be classified in real time along with the distribution of their respective probabilities and comparison of their similarities to each other.
 
 3. Start the API Server
 uvicorn main:app --reload
